@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin · Upload de Vídeo</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body style="max-width: 300px; margin: 50px auto; font-family: 'Segoe UI', sans-serif;">
+  <h1>Upload de Vídeo por Tema</h1>
+  <form action="/admin/upload" method="post" enctype="multipart/form-data">
+    <label for="theme">Tema:</label><br/>
+    <select id="theme" name="theme" required>
+      <!-- opções preenchidas via JS -->
+    </select>
+    <br/><br/>
+    <label for="video">Escolha o vídeo (MP4 ou WEBM):</label><br/>
+    <input id="video" name="video" type="file"
+           accept="video/mp4,video/webm" required>
+    <br/><br/>
+    <button type="submit">Enviar Vídeo</button>
+  </form>
+
+  <script>
+    // popula o <select> com os temas disponíveis
+    fetch('/themes')
+      .then(res => res.json())
+      .then(themes => {
+        const sel = document.getElementById('theme');
+        themes.forEach(t => {
+          const opt = document.createElement('option');
+          opt.value = t;
+          opt.textContent = t;
+          sel.appendChild(opt);
+        });
+      })
+      .catch(err => console.error('Erro ao listar temas:', err));
+  </script>
+
+    <div id="popup-modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="popup-close" class="modal-close">×</button>
+      <img id="popup-image" src="" alt="Promoção" />
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+/* ==== RESET ==== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==== GLOBAL ==== */
+body {
+  background: #14154e;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+header {
+  margin: 40px 0;
+  text-align: center;
+}
+header h1 {
+  font-size: 2rem;
+  color: #fff;
+}
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1280px;
+  padding: 20px;
+}
+footer {
+  padding: 20px 0;
+  font-size: .9rem;
+  color: #ddd;
+  text-align: center;
+  width: 100%;
+  background: #14154e;
+}
+
+/* ==== GRID ==== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  justify-items: center;
+}
+
+/* ==== CARDS ==== */
+.card {
+  width: 100%;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.card-body {
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.05), 0 4px 6px rgba(0,0,0,0.03);
+}
+.card-body img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-footer {
+  background: #e8e8e8;
+  border-radius: 0 0 20px 20px;
+  padding: 10px 0;
+  text-align: center;
+  color: #000;
+  font-size: 1rem;
+  box-shadow: inset 0 4px 6px rgba(0,0,0,0.03);
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.15), 0 8px 10px rgba(0,0,0,0.05);
+}
+
+/* ==== HOME BUTTON ==== */
+.theme-header {
+  position: relative;
+  width: 100%;
+  padding: 40px 0 20px;
+  text-align: center;
+  background: #14154e;
+}
+.home-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 48px;
+  height: 48px;
+  background: #14154e;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.home-btn svg {
+  width: 50px;
+  height: 45px;
+  fill: #fff;
+}
+.home-btn:hover {
+  background: rgba(0,0,0,0.6);
+}
+
+/* ==== PLAYER PAGE ==== */
+.player-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+.video-frame {
+  position: relative;
+  width: 960px;
+  background: #D9D9D9;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 40px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.13);
+}
+.video-frame video {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px 12px 0 0;
+}
+
+/* ==== NATIVE CONTROLS ==== */
+video::-webkit-media-controls,
+video::-moz-media-controls {
+  display: none !important;
+}
+
+/* ==== PROGRESS BAR ==== */
+.progress-container {
+  display: flex;
+  align-items: center;
+  width: 960px;
+  margin: 0 auto;
+  padding: 4px 12px;
+  gap: 4px;
+}
+.progress-container span {
+  color: #fff;
+  font-family: monospace;
+  font-size: 0.75rem;
+  width: 40px;
+  text-align: center;
+}
+#seek-bar {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 2px;
+}
+#seek-bar::-webkit-slider-thumb,
+#seek-bar::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* ==== CUSTOM CONTROLS ==== */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0 12px;
+}
+.controls button {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+.controls img {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+.controls button:hover {
+  transform: scale(1.2);
+}
+
+/* ==== HIDE SCROLLBAR ==== */
+body.theme-page,
+body.player-page {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+body.theme-page::-webkit-scrollbar,
+body.player-page::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* ==== FULLSCREEN MODE ==== */
+.video-frame:-webkit-full-screen,
+.video-frame:fullscreen {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+.video-frame:-webkit-full-screen video,
+.video-frame:fullscreen video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+.video-frame:-webkit-full-screen .progress-container,
+.video-frame:fullscreen .progress-container,
+.video-frame:-webkit-full-screen .controls,
+.video-frame:fullscreen .controls {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  padding: 8px 16px !important;
+  background: rgba(0,0,0,0.3) !important;
+  box-sizing: border-box !important;
+  align-items: center !important;
+}
+
+/* ==== AUTO-HIDE CONTROLS ==== */
+.video-frame .controls,
+.video-frame .progress-container {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.video-frame.hide-ui .controls,
+.video-frame.hide-ui .progress-container {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==== WHITE ICONS ==== */
+.controls img {
+  filter: invert(1) !important;
+}
+
+/* Aumenta o tamanho do texto “Em breve!” */
+.empty {
+  font-size: 2rem;
+}
+
+
+/* ====== Popup Modal ====== */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.hidden {
+  display: none;
+}
+.modal-content {
+  position: relative;
+  background: #004080;       /* fundo azul forte */
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 600px;          /* largura fixa próxima ao exemplo */
+  width: 90%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  color: #fff;               /* texto branco, caso use HTML dentro */
+}
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #fff;           /* botão branco */
+  color: #000;                /* texto preto */
+  border: none;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.modal-close:hover {
+  background: #f2f2f2;
+}
+.modal-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}

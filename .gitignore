@@ -1,0 +1,13 @@
+cat <<EOF > .gitignore
+# Dependências e builds
+node_modules/
+
+# Vídeos pesados
+videos/
+*.mp4
+
+# Configurações locais
+.env
+EOF
+videos/
+*.mp4

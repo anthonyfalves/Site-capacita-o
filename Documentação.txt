@@ -1,0 +1,166 @@
+1. Introdução
+
+Este documento descreve detalhadamente o projeto de uma plataforma web de streaming de vídeos, onde os arquivos de vídeo são armazenados em uma pasta local. A plataforma exibirá títulos dos vídeos e, ao serem clicados, permitirá ao usuário assistir ao conteúdo selecionado.
+
+2. Objetivos
+
+Objetivo Geral: Desenvolver um site que funcione como uma plataforma de streaming de vídeos locais.
+
+Objetivos Específicos:
+
+Listar dinamicamente os vídeos disponíveis.
+
+Exibir título e miniatura (opcional) de cada vídeo.
+
+Reproduzir vídeos com suporte a streaming (HTTP range requests).
+
+Manter código organizado e documentado para manutenção futura.
+
+3. Escopo do Projeto
+
+Inclusões:
+
+Backend para leitura de diretório e streaming de arquivos.
+
+Frontend para exibição de lista e player de vídeo.
+
+Documentação técnica completa.
+
+Exclusões:
+
+Autenticação de usuários.
+
+Upload ou gerenciamento remoto de vídeos.
+
+4. Requisitos Funcionais
+
+RF01: O sistema deve listar todos os vídeos presentes em uma pasta configurável.
+
+RF02: O sistema deve exibir o título de cada vídeo na interface.
+
+RF03: Ao clicar no título, o sistema deve iniciar o streaming do vídeo.
+
+RF04: O player deve suportar pausa, avanço e retrocesso.
+
+5. Requisitos Não Funcionais
+
+RNF01: O sistema deve garantir carregamento rápido da lista de vídeos.
+
+RNF02: O streaming deve suportar HTTP Range para pular para qualquer ponto do vídeo.
+
+RNF03: O código deve seguir boas práticas de legibilidade e manutenção.
+
+RNF04: Compatibilidade com navegadores modernos (Chrome, Firefox, Edge).
+
+6. Arquitetura do Sistema
+
+6.1. Diagrama de Componentes
+
+Frontend (HTML/CSS/JavaScript)
+
+Backend (Node.js/Express ou Django/Flask)
+
+Sistema de Arquivos Local
+
+6.2. Fluxo de Dados
+
+Cliente acessa a rota /videos.
+
+Backend lê diretório e retorna JSON com metadados (títulos, caminhos).
+
+Frontend renderiza lista de títulos.
+
+Ao clicar, frontend requisita /videos/stream/:nomeArquivo.
+
+Backend envia conteúdo em streaming.
+
+7. Tecnologias Utilizadas
+
+Camada
+
+Tecnologia Sugerida
+
+Backend
+
+Node.js + Express ou Python
+
+Frontend
+
+HTML5 + CSS3 + Vanilla JS
+
+Player
+
+Elemento <video> do HTML5
+
+Version
+
+Git
+
+8. Estrutura de Pastas
+
+project-root/
+├── backend/
+│   ├── index.js
+│   ├── routes/
+│   └── controllers/
+├── frontend/
+│   ├── index.html
+│   └── assets/
+└── videos/
+    └── nome_do_video.mp4
+
+9. API e Rotas
+
+Método
+
+Rota
+
+Descrição
+
+GET
+
+/api/videos
+
+Retorna lista de vídeos em JSON
+
+GET
+
+/api/videos/stream/:id
+
+Inicia streaming do vídeo pelo nome/caminho
+
+10. Interface do Usuário (UI)
+
+Página Inicial: Lista de títulos clicáveis.
+
+Player de Vídeo: Área central com controles de reprodução.
+
+Botão de Retorno: Um botão (seta ou ícone de casa) que permita ao usuário voltar à página inicial de qualquer ponto do player.
+
+11. Testes Testes
+
+Testar listagem de vídeos com diferentes extensões.
+
+Testar streaming com arquivos grandes.
+
+Verificar suporte a salto de tempo no vídeo.
+
+12. Implantação
+
+Configurar ambiente Node.js ou Python.
+
+Definir variável de ambiente para pasta de vídeos.
+
+Executar comando de inicialização.
+
+Acessar http://localhost:porta.
+
+13. Manutenção e Evolução
+
+Adicionar pesquisa por título.
+
+Suporte a miniaturas (thumbnails).
+
+Integração com CDN para vídeos remotos.
+
+Autenticação de usuários (avant-garde).

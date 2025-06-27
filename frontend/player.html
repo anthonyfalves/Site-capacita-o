@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="page-title">Reproduzindo.</title>
+  <link rel="icon" href="assets/covers/logo-gov-mt.ico" type="image/x-icon"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="player-page">
+  <header class="theme-header">
+    <a id="home-btn" class="home-btn" title="Voltar aos Vídeos do Tema">
+      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    </a>
+    <h1 id="video-title">Vídeo</h1>
+  </header>
+  <main>
+    <div class="player-container">
+      <div class="video-frame">
+        <video id="player" preload="metadata" oncontextmenu="return false"></video>
+        <div class="progress-container">
+          <span id="current-time">00:00</span>
+          <input type="range" id="seek-bar" value="0" min="0" step="0.1">
+          <span id="duration">00:00</span>
+        </div>
+        <div class="controls">
+          <button id="btn-rewind"    title="Voltar 10s"><img src="assets/covers/icons/Botao-next-E.png" alt="⏪"></button>
+          <button id="btn-playpause" title="Play/Pause"><img src="assets/covers/icons/botao-play.png" alt="▶️"></button>
+          <button id="btn-forward"   title="Avançar 10s"><img src="assets/covers/icons/Botao-next-D.png" alt="⏩"></button>
+          <button id="btn-mute"      title="Mudo"><img src="assets/covers/icons/botao-mute.png" alt="🔇"></button>
+          <button id="btn-fullscreen" title="Tela cheia"><img src="assets/covers/icons/botao-expandir.png" alt="⛶"></button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    Coordenadoria de Tecnologia da Informação da Casa Civil
+  </footer>
+
+  <!-- Inclui TODO o script.js com lógica de player e auto-hide -->
+  <script src="script.js"></script>
+</body>
+</html>
